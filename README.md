@@ -23,7 +23,7 @@ There's a slight change in our `ng-controller` syntax too:
 </div>
 ```
 
-Here we tell Angular we'd like to use our controller *as* a variable named `main`. This then creates a new instance of our controller (with all of our values bound to the controller's instance, rather than `$scope`) and assigns the instance to a variable named `main`. This then allows us to access our properties with ``{{ main.propertyName }}`.
+Here we tell Angular we'd like to use our controller *as* a variable named `main`. This then creates a new instance of our controller (with all of our values bound to the controller's instance, rather than `$scope`) and assigns the instance to a variable named `main`. This then allows us to access our properties with `{{ main.propertyName }}`.
 
 We'd take this:
 
