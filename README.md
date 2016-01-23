@@ -25,24 +25,6 @@ There's a slight change in our `ng-controller` syntax too:
 
 Here we tell Angular we'd like to use our controller *as* a variable named `main`. This then creates a new instance of our controller (with all of our values bound to the controller's instance, rather than `$scope`) and assigns the instance to a variable named `main`. This then allows us to access our properties with ``{{ main.propertyName }}`.
 
-We'd take this:
-
-```js
-function MainController($scope) {
-  $scope.name = 'Bill Gates';
-}
-```
-
-And convert it into:
-
-```js
-function MainController() {
-  this.name = 'Bill Gates';
-}
-```
-
-Done! That's all it takes.
-
 ## Oh no, nested scopes
 
 This helps us when we have nested scopes. If we had a controller inside a controller, and both added the variable `name` to `$scope` - what one would we see?
@@ -59,6 +41,24 @@ This helps us when we have nested scopes. If we had a controller inside a contro
 We wouldn't be sure where `name` was coming from in this example. What if we wanted to use `name` from `MainController` instead of `AnotherController` both times? We wouldn't be able to!
 
 That's where controllerAs saves the day - we can assign each controller to different variables and we'd know where `name` is from.
+
+We'd take this:
+
+```js
+function MainController($scope) {
+  $scope.name = 'Bill Gates';
+}
+```
+
+And convert it into:
+
+```js
+function MainController() {
+  this.name = 'Bill Gates';
+}
+```
+
+Done! That's all it takes. The HTML markup would then look like:
  
 ```html
 <div ng-controller="MainController as main">
@@ -68,6 +68,19 @@ That's where controllerAs saves the day - we can assign each controller to diffe
   </div>
 </div>
 ```
+
+This would render out to be:
+
+```html
+<div ng-controller="MainController as main">
+  Bill Gates
+  <div ng-controller="AnotherController as another">
+    Steve Jobs and Bill Gates
+  </div>
+</div>
+```
+
+No more issues with nested scopes!
 
 ## What about the rest of $scope
 
