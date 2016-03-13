@@ -27,7 +27,7 @@ Here we tell Angular we'd like to use our controller *as* a variable named `main
 
 ## Oh no, nested scopes
 
-This helps us when we have nested scopes. If we had a controller inside a controller, and both added the variable `name` to `$scope` - what one would we see?
+This helps us when we have nested scopes. If we had a controller inside a controller, and both added the variable `name` to `$scope` - which one would we see?
 
 ```html
 <div ng-controller="MainController">
@@ -87,3 +87,5 @@ No more issues with nested scopes!
 So does this mean we can use `this.$watch` instead of `$scope.$watch`? Unfortunately not - the API for watching value changes still sits with `$scope`, so we still have to use that.
 
 Think of it this way - when we use controllerAs, we're allowing our controllers to assign anything they want our view to access to the `this` keyword. Everything else is as it was before!
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/angular-controllers-readme'>Angular Controllers</a> on Learn.co and start learning to code for free.</p>
